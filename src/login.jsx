@@ -99,7 +99,7 @@ const Login = () => {
           // When in Sign-Up mode ➤ Show only "Sign In" side on the left
           <div className="overlay-panel">
             <h1>Welcome Back!</h1>
-            <p>To keep connected with us please with your personal info</p>
+            <p>To keep connected with us please signup with your personal info</p>
             <button className="ghost" onClick={() => setIsSignUp(false)}>
               Sign In
             </button>
