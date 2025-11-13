@@ -59,37 +59,61 @@ export default Login;  // <-- must match component name
 
 
 
-// src/login.jsx
-import React from "react";
+
+
+
+import React, { useState } from "react";
 import "./Login.css";
 
 const Login = () => {
-  return (
-    <div className="login-page">
-      <div className="overlay">
-        <div className="content">
-          <h1 className="title">Welcome to RentHouse</h1>
-          <h2 className="subtitle">Find your perfect home with ease</h2>
-          <p className="info">Log in to continue managing your rental account.</p>
+  const [isSignUp, setIsSignUp] = useState(false);
 
-          <form className="login-form">
-            <input
-              type="email"
-              placeholder="Email address"
-              className="input-field"
-              required
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              className="input-field"
-              required
-            />
-            <button type="submit" className="login-btn">
-              Log In
+  return (
+    <div className={`login-container ${isSignUp ? "sign-up-mode" : ""}`}>
+      {/* 🔹 Sign In Form */}
+      <div className="form-container sign-in-container">
+        <form className="form">
+          <h1>Sign In</h1>
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
+          <a href="#">Forgot your password?</a>
+          <button type="submit">Sign In</button>
+        </form>
+      </div>
+
+      {/* 🔹 Sign Up Form */}
+      <div className="form-container sign-up-container">
+        <form className="form">
+          <h1>Create Account</h1>
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
+          <input type="phone number" placeholder="Phone Number" required />
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+
+      {/* 🔹 Overlay Section (Purple) */}
+      <div className="overlay-container">
+        {isSignUp ? (
+          // When in Sign-Up mode ➤ Show only "Sign In" side on the left
+          <div className="overlay-panel">
+            <h1>Welcome Back!</h1>
+            <p>To keep connected with us please with your personal info</p>
+            <button className="ghost" onClick={() => setIsSignUp(false)}>
+              Sign In
             </button>
-          </form>
-        </div>
+          </div>
+        ) : (
+          // When in Sign-In mode ➤ Show only "Sign Up" side
+          <div className="overlay-panel">
+            <h1>Welcome to RentHouse!</h1>
+            <p>Log in to continue managing your rental account</p>
+            <button className="ghost" onClick={() => setIsSignUp(true)}>
+              Sign Up
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

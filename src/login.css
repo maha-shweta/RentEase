@@ -1,70 +1,49 @@
-/* App.css */
-/*
-.signup-container {
-  width: 350px;
-  margin: 50px auto;
-  padding: 30px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  font-family: Arial, sans-serif;
-}
 
-.signup-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.signup-form input {
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.signup-form button {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4CAF50;
-  color: white;
-  cursor: pointer;
-}
-
-.signup-form button:hover {
-  background-color: #45a049;
-}
-
-.message {
-  margin-top: 15px;
-  color: red;
-  font-weight: bold;
-}
-
-*/
-
-
-
-
-.login-page {
+/*.login-page {
   position: relative;
   height: 100vh;
   width: 100vw;
-  background-image: url("https://assets.nflxext.com/ffe/siteui/vlv3/bd0d3e8e-12da-44cc-9c72-07ee98b2e5e2/ccfa5b9f-d3f2-4e8d-8d20-04e2a64aaf9d/BD-en-20230410-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+  /*background-image: url("/LogInBack2.jpg");
   background-size: cover;
   background-position: center;
+  */
+  /*
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Poppins", sans-serif;
   overflow: hidden;
+} 
+
+
+
+.signup-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #2b0466;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
+
+.signup-btn:hover {
+  background-color: #ff9800;
+}
+
+
 
 .overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.65);
-  display: flex;
+  /* background-color: rgba(0, 0, 0, 0.65); */
+  
+  /*display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -74,29 +53,52 @@
   z-index: 2;
   text-align: center;
   color: white;
+
   width: 90%;
-  max-width: 400px;
-  padding: 40px;
-  background-color: rgba(0, 0, 0, 0.75);
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  max-width: 400px; /* 400 */
+  /*padding: 50px;    /* 40 */
+
+  /*background-color: rgba(0, 0, 0, 0.75);*/
+  /*background-color: rgba(23, 3, 96, 0.85);*/
+  /*background: linear-gradient(135deg, #6a0dad, #3d038e);
+  /*border-radius: 12px;*/
+  /*border-radius: 16px;
+  /*box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);*/
+  /*box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
 }
 
 .title {
-  font-size: 2rem;
+  /*font-size: 2rem;
   margin-bottom: 10px;
-  font-weight: bold;
+  font-weight: bold;*/
+  /*.content h1 {
+  font-family: 'Playfair Display', serif; /* or 'Quicksand' / 'Cinzel' */
+  /*font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px;
+             }
 }
 
 .subtitle {
+  /*
   font-size: 1.2rem;
   margin-bottom: 20px;
+  color: #ddd;*/
+  /*font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
   color: #ddd;
 }
 
 .info {
+  /*
   margin-bottom: 30px;
-  color: #bbb;
+  color: #bbb;*/
+  /*font-family: 'Playfair Display', serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #ddd;
 }
 
 .login-form {
@@ -114,7 +116,7 @@
 
 .login-btn {
   padding: 12px;
-  background-color: #e50914;
+  background-color: #46035c;
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -125,10 +127,11 @@
 }
 
 .login-btn:hover {
-  background-color: #f6121d;
+  background-color: #1e036e;
 }
 
 /* 📱 Responsive for mobile */
+/*
 @media (max-width: 600px) {
   .title {
     font-size: 1.6rem;
@@ -142,3 +145,195 @@
     padding: 25px;
   }
 }
+
+*/
+
+
+
+/* 🔹 Container for both sections */
+.login-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+}
+
+/* 🔹 Shared form layout */
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  background: #fff;
+  text-align: center;
+  z-index: 2;
+}
+
+.form {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+.form h1 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.form input {
+  background: #f0f0f0;
+  border: none;
+  padding: 12px;
+  margin: 8px 0;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.form a {
+  color: #6a11cb;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+.form button {
+  margin-top: 10px;
+  border-radius: 20px;
+  border: none;
+  background: #6a11cb;
+  color: #fff;
+  padding: 10px 45px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form button:hover {
+  background: #5012a5;
+}
+
+/* 🔹 Social icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.social-icons a {
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 8px;
+  color: #333;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: #6a11cb;
+  color: #fff;
+}
+
+/* 🔹 Overlay (purple section) */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: #6a11cb;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 150px 0 0 150px;
+  transition: all 0.6s ease-in-out;
+  z-index: 1;
+}
+
+.overlay-panel {
+  text-align: center;
+  padding: 40px;
+  width: 80%;
+}
+
+.overlay-panel h1 {
+  margin-bottom: 10px;
+}
+
+.overlay-panel p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.ghost {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* 🔹 Sign-up section (hidden initially) */
+.sign-up-container {
+  left: 100%;
+  opacity: 0;
+  z-index: 1;
+}
+
+/* 🔹 When Sign Up mode is active */
+.login-container.sign-up-mode .sign-in-container {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.login-container.sign-up-mode .sign-up-container {
+  transform: translateX(-100%);
+  opacity: 1;
+  z-index: 5;
+}
+
+.login-container.sign-up-mode .overlay-container {
+  transform: translateX(-100%);
+  border-radius: 0 150px 150px 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sign-in-container {
+  left: 0;
+  z-index: 3;
+}
+.sign-up-container {
+  left: 100%;
+  opacity: 0;
+  z-index: 1;
+  transition: all 0.6s ease-in-out;
+}
+
+
+
