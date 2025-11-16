@@ -1,4 +1,5 @@
 const pool = require('../config/db');  // Import the PostgreSQL connection
+const jwt = require('jsonwebtoken');  // Import jsonwebtoken for JWT handling
 
 // Create Property (Landlord adds a new property)
 const createProperty = async (req, res) => {
@@ -14,7 +15,7 @@ const createProperty = async (req, res) => {
     const insertQuery = `
       INSERT INTO properties (landlord_id, address, type, rent_amount, size, availability_status)
       VALUES ($1, $2, $3, $4, $5, $6)
-      RETURNING *;  // Returning the newly inserted row
+      RETURNING *;  
     `;
     const values = [landlord_id, address, type, rent_amount, size, availability_status];
     const result = await pool.query(insertQuery, values);
@@ -64,7 +65,7 @@ const updateProperty = async (req, res) => {
       UPDATE properties
       SET address = $1, type = $2, rent_amount = $3, size = $4, availability_status = $5, updated_at = CURRENT_TIMESTAMP
       WHERE id = $6
-      RETURNING *;  // Return the updated property row
+      RETURNING *;  
     `;
     const values = [address, type, rent_amount, size, availability_status, property_id];
 
