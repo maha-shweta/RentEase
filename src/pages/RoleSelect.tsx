@@ -44,7 +44,7 @@ const RoleSelect = () => {
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-medium transition-all duration-300 cursor-pointer border-2 hover:border-secondary opacity-60">
+            <Card className="group hover:shadow-medium transition-all duration-300 cursor-pointer border-2 hover:border-secondary">
               <CardHeader>
                 <div className="w-16 h-16 rounded-lg bg-secondary/10 flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
                   <User className="w-8 h-8 text-secondary" />
@@ -55,8 +55,8 @@ const RoleSelect = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Button className="w-full" size="lg" variant="secondary" disabled>
-                  Coming Soon
+                <Button className="w-full" size="lg" variant="secondary">
+                  Continue as Tenant
                 </Button>
               </CardContent>
             </Card>
