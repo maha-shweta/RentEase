@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginFormData } from "@/schemas/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useToast } from "@/hooks/use-toast";
 
@@ -27,7 +27,7 @@ const Login = () => {
       title: "Login Successful",
       description: "Welcome back to RentEase!",
     });
-    navigate("/landlord/dashboard");
+    navigate({ to: "/landlord/dashboard" });
   };
 
   return (

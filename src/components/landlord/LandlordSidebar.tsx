@@ -9,8 +9,7 @@ import {
   LogOut,
   Bell,
 } from "lucide-react";
-import { NavLink } from "@/components/NavLink";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import {
   Sidebar,
   SidebarContent,
@@ -50,7 +49,7 @@ export function LandlordSidebar() {
       title: "Logged Out",
       description: "You have been successfully logged out.",
     });
-    navigate("/");
+    navigate({ to: "/" });
   };
 
   return (
@@ -63,10 +62,10 @@ export function LandlordSidebar() {
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild isActive={currentPath === item.url}>
-                    <NavLink to={item.url}>
+                    <Link to={item.url}>
                       <item.icon className="h-4 w-4" />
                       {!isCollapsed && <span>{item.title}</span>}
-                    </NavLink>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -79,30 +78,17 @@ export function LandlordSidebar() {
           <SidebarGroupContent>
             <div className="px-2 space-y-2">
               {!isCollapsed ? (
-                <>
-                  <div className="p-3 bg-primary/10 rounded-md border border-primary/20">
-                    <div className="flex items-start gap-2">
-                      <Bell className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                      <div className="space-y-1">
-                        <p className="text-xs font-medium">Rent Collection Notice</p>
-                        <p className="text-xs text-muted-foreground">
-                          Monthly rent collection starts on the 1st of each month.
-                        </p>
-                      </div>
+                <div className="p-3 bg-primary/10 rounded-md border border-primary/20">
+                  <div className="flex items-start gap-2">
+                    <Bell className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    <div className="space-y-1">
+                      <p className="text-xs font-medium">Rent Collection Notice</p>
+                      <p className="text-xs text-muted-foreground">
+                        Monthly rent collection starts on the 1st of each month.
+                      </p>
                     </div>
                   </div>
-                  <div className="p-3 bg-secondary/10 rounded-md border border-secondary/20">
-                    <div className="flex items-start gap-2">
-                      <Bell className="h-4 w-4 text-secondary mt-0.5 flex-shrink-0" />
-                      <div className="space-y-1">
-                        <p className="text-xs font-medium">Maintenance Update</p>
-                        <p className="text-xs text-muted-foreground">
-                          Scheduled maintenance for Building A on Jan 15th.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </>
+                </div>
               ) : (
                 <div className="flex justify-center">
                   <Bell className="h-4 w-4 text-primary" />

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Building2, User } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "@tanstack/react-router";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const RoleSelect = () => {
@@ -27,7 +27,7 @@ const RoleSelect = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="group hover:shadow-medium transition-all duration-300 cursor-pointer border-2 hover:border-primary" onClick={() => navigate("/landlord/login")}>
+            <Card className="group hover:shadow-medium transition-all duration-300 cursor-pointer border-2 hover:border-primary" onClick={() => navigate({ to: "/landlord/login" })}>
               <CardHeader>
                 <div className="w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                   <Building2 className="w-8 h-8 text-primary" />
