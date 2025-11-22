@@ -1,80 +1,35 @@
+
+
+
+
+
+
+
+
 /*
-import React, { useState } from "react";
-import "./login.css";
-
-function Login() {  // <-- Component name must be capitalized
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-
-  const [message, setMessage] = useState("");
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.password) {
-      setMessage("All fields are required!");
-      return;
-    }
-    if (formData.password !== formData.confirmPassword) {
-      setMessage("Passwords do not match!");
-      return;
-    }
-    setMessage("Signup successful!");
-    console.log("Form Data Submitted:", formData);
-    setFormData({
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
-  };
-
-  return (
-    <div className="signup-container">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit} className="signup-form">
-        <input type="text" name="name" placeholder="Full Name" value={formData.name} onChange={handleChange} />
-        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
-        <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
-        <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} />
-        <button type="submit">Sign Up</button>
-      </form>
-      {message && <p className="message">{message}</p>}
-    </div>
-  );
-}
-
-export default Login;  // <-- must match component name
-*/
-
-
-
-
-
-
-
-
 import React from "react";
 import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import "./tenantlogin.css";
 
 function TenantLogin() {
+
+            const navigate = useNavigate();
+
+  const handleLogin = () => {
+    // you can add validation later
+    navigate("/dashboard");
+  };
   return (
     <div className="page">
-      {/* Top Navbar */}
+      {/* Top Navbar *//*}/*
       <div className="navbar">
         <div className="logo">RentEase</div>
         <div className="reload">⟳</div>
       </div>
 
-      {/* Login Box */}
+      {/* Login Box *//*}/*
       <div className="login-card">
         <h2>Welcome Back</h2>
         <p className="subtitle">Sign in to your landlord account</p>
@@ -101,7 +56,54 @@ function TenantLogin() {
 export default TenantLogin;
 
 
+*/
 
 
 
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./tenantlogin.css";
 
+function TenantLogin() {
+
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/dashboard");
+  };
+
+  return (
+    <div className="page">
+      {/* Top Navbar */}
+      <div className="navbar">
+        <div className="logo">RentEase</div>
+        <div className="reload">⟳</div>
+      </div>
+
+      {/* Login Box */}
+      <div className="login-card">
+        <h2>Welcome Back</h2>
+        <p className="subtitle">Sign in to your landlord account</p>
+
+        <label>Email</label>
+        <input type="email" />
+
+        <label>Password</label>
+        <input type="password" />
+
+        <button className="login-btn" onClick={handleLogin}>
+          Sign In
+        </button>
+
+        <p className="signup-text">
+          Don’t have an account?{" "}
+          <Link to="/signup" className="signup-link">
+            Sign up
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default TenantLogin;

@@ -1,0 +1,75 @@
+.payment-history-page {
+  padding: 30px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.filter-bar select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* Card */
+.history-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead tr {
+  background: #f1f5ff;
+}
+
+th,
+td {
+  padding: 14px;
+  text-align: left;
+}
+
+tr {
+  border-bottom: 1px solid #eee;
+}
+
+/* Status */
+.paid {
+  color: #22c55e;
+  font-weight: bold;
+}
+
+.late {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+.due {
+  color: #f97316;
+  font-weight: bold;
+}
+
+.no-data {
+  text-align: center;
+  color: #999;
+  padding: 20px;
+}

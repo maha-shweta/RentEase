@@ -1,0 +1,100 @@
+.rent-page {
+  padding: 30px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/* Rent Summary Card */
+.rent-summary-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+}
+
+.rent-summary-card h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.rent-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.rent-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 16px;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.pay-btn {
+  background: #2563eb;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.pay-btn:hover {
+  background: #1e4fc6;
+}
+
+.paid-label {
+  color: green;
+  font-size: 16px;
+  margin-top: 12px;
+}
+
+/* Payment Status Card */
+.payment-status-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-top: 20px;
+}
+
+.payment-status-card h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.status-paid {
+  color: green;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.status-unpaid {
+  color: red;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Receipt Button */
+.receipt-btn {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+  background: #1e293b;
+  padding: 10px 14px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.receipt-btn .icon {
+  width: 20px;
+}
