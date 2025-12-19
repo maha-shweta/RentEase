@@ -6,6 +6,7 @@ import { FileText, Download, Calendar, User, Building2, Loader2, Trash2 } from "
 import { useToast } from "@/hooks/use-toast";
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
+import { generateLeasePDF } from "@/lib/generateLeasePDF";
 
 interface RentalAgreement {
   id: number;
@@ -80,12 +81,18 @@ export function LeasesList({ onRefresh }: LeasesListProps) {
     }
   };
 
-  const handleGeneratePDF = (id: number) => {
-    toast({ title: "PDF Generated", description: "Lease agreement has been generated successfully." });
+  const handleGeneratePDF = (lease: RentalAgreement) => {
+    try {
+      generateLeasePDF(lease);
+      toast({ title: "PDF Generated", description: "Lease agreement PDF has been generated and downloaded." });
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      toast({ title: "Error", description: "Failed to generate PDF. Please try again.", variant: "destructive" });
+    }
   };
 
-  const handleDownload = (id: number) => {
-    toast({ title: "Download Started", description: "Lease document is being downloaded." });
+  const handleDownload = (lease: RentalAgreement) => {
+    handleGeneratePDF(lease);
   };
 
   const isExpiringSoon = (endDate: string) => {
@@ -196,16 +203,16 @@ export function LeasesList({ onRefresh }: LeasesListProps) {
               </div>
               <div className="flex justify-between items-center mt-2">
                 <span className="text-sm text-muted-foreground">Monthly Rent</span>
-                <span className="font-bold">${Number(lease.rent_amount).toLocaleString()}</span>
+                <span className="font-bold">BDT {Number(lease.rent_amount).toLocaleString()}</span>
               </div>
             </div>
 
             <div className="flex gap-2">
-              <Button variant="outline" size="sm" className="flex-1" onClick={() => handleGeneratePDF(lease.id)}>
+              <Button variant="outline" size="sm" className="flex-1" onClick={() => handleGeneratePDF(lease)}>
                 <FileText className="h-4 w-4 mr-2" />
                 Generate PDF
               </Button>
-              <Button variant="outline" size="sm" onClick={() => handleDownload(lease.id)}>
+              <Button variant="outline" size="sm" onClick={() => handleDownload(lease)}>
                 <Download className="h-4 w-4" />
               </Button>
               <Button variant="outline" size="sm" onClick={() => handleDelete(lease.id)} className="text-destructive hover:bg-destructive hover:text-destructive-foreground">

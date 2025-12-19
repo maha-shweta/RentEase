@@ -107,7 +107,7 @@ export function EditUnitDialog({ open, onOpenChange, unit, onSuccess }: EditUnit
                                 name="rentAmount"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Rent Amount ($)</FormLabel>
+                                        <FormLabel>Rent Amount (BDT)</FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="number"

@@ -148,7 +148,7 @@ export function UtilityDialog({ open, onOpenChange, onSuccess }: UtilityDialogPr
                 name="amount"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Amount ($)</FormLabel>
+                    <FormLabel>Amount (BDT)</FormLabel>
                     <FormControl>
                       <Input
                         type="number"

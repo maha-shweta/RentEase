@@ -89,7 +89,7 @@ export function UnitsList({ propertyId, onRefresh }: UnitsListProps) {
                                         </Badge>
                                     </div>
                                     <div className="text-sm text-muted-foreground">
-                                        ${Number(unit.rent_amount).toLocaleString()} • {unit.size ? `${unit.size} sq ft` : 'N/A'}
+                                        BDT {Number(unit.rent_amount).toLocaleString()} • {unit.size ? `${unit.size} sq ft` : 'N/A'}
                                     </div>
                                 </div>
                                 <div className="flex gap-2">

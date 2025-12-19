@@ -133,7 +133,7 @@ export function PaymentDialog({ open, onOpenChange, onSuccess }: PaymentDialogPr
                                             ) : (
                                                 rentalAgreements.map((agreement) => (
                                                     <SelectItem key={agreement.id} value={String(agreement.id)}>
-                                                        {agreement.tenant_name || `Tenant #${agreement.tenant_id}`} - ${Number(agreement.rent_amount).toLocaleString()}/mo
+                                                        {agreement.tenant_name || `Tenant #${agreement.tenant_id}`} - BDT {Number(agreement.rent_amount).toLocaleString()}/mo
                                                     </SelectItem>
                                                 ))
                                             )}
@@ -150,7 +150,7 @@ export function PaymentDialog({ open, onOpenChange, onSuccess }: PaymentDialogPr
                                 name="amount"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Amount ($)</FormLabel>
+                                        <FormLabel>Amount (BDT)</FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="number"

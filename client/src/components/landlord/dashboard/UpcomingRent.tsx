@@ -56,7 +56,7 @@ export function UpcomingRent() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="font-bold">${Number(payment.amount).toLocaleString()}</div>
+                  <div className="font-bold">BDT {Number(payment.amount).toLocaleString()}</div>
                   <Badge variant="secondary">{payment.payment_status}</Badge>
                 </div>
               </div>

@@ -1,22 +1,76 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { useState, useEffect } from "react";
+import { paymentService, Payment } from "@/services/payment";
+import { Loader2 } from "lucide-react";
 
-const revenueData = [
-  { month: "Jan", revenue: 8500 },
-  { month: "Feb", revenue: 9200 },
-  { month: "Mar", revenue: 8800 },
-  { month: "Apr", revenue: 10200 },
-  { month: "May", revenue: 9500 },
-  { month: "Jun", revenue: 10200 },
-  { month: "Jul", revenue: 9800 },
-  { month: "Aug", revenue: 10200 },
-  { month: "Sep", revenue: 9300 },
-  { month: "Oct", revenue: 10200 },
-  { month: "Nov", revenue: 10700 },
-  { month: "Dec", revenue: 11200 },
-];
+interface MonthlyRevenue {
+  month: string;
+  revenue: number;
+}
 
 export function RevenueChart() {
+  const [loading, setLoading] = useState(true);
+  const [revenueData, setRevenueData] = useState<MonthlyRevenue[]>([]);
+
+  useEffect(() => {
+    const fetchRevenueData = async () => {
+      setLoading(true);
+      try {
+        const response = await paymentService.getAll();
+        const payments = response.data?.payments || [];
+        
+        // Filter only paid payments
+        const paidPayments = payments.filter((p: Payment) => p.payment_status === 'Paid');
+        
+        // Group by month
+        const monthlyData: { [key: string]: number } = {};
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        
+        // Initialize all months with 0
+        monthNames.forEach(month => {
+          monthlyData[month] = 0;
+        });
+        
+        // Sum payments by month
+        paidPayments.forEach((payment: Payment) => {
+          const date = payment.paid_at ? new Date(payment.paid_at) : new Date(payment.created_at || Date.now());
+          const monthIndex = date.getMonth();
+          const monthName = monthNames[monthIndex];
+          monthlyData[monthName] += Number(payment.amount);
+        });
+        
+        // Convert to array format for chart
+        const chartData: MonthlyRevenue[] = monthNames.map(month => ({
+          month,
+          revenue: monthlyData[month]
+        }));
+        
+        setRevenueData(chartData);
+      } catch (error) {
+        console.error("Error fetching revenue data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchRevenueData();
+  }, []);
+
+  if (loading) {
+    return (
+      <Card className="animate-fade-in">
+        <CardHeader>
+          <CardTitle>Revenue Trend</CardTitle>
+          <CardDescription>Monthly revenue over the past year</CardDescription>
+        </CardHeader>
+        <CardContent className="flex items-center justify-center h-[300px]">
+          <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card className="animate-fade-in">
       <CardHeader>
@@ -41,6 +95,7 @@ export function RevenueChart() {
                 border: "1px solid hsl(var(--border))",
                 borderRadius: "8px",
               }}
+              formatter={(value: number) => [`BDT ${value.toLocaleString()}`, 'Revenue']}
             />
             <Area
               type="monotone"

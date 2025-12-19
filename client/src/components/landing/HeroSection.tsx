@@ -84,7 +84,7 @@ export function HeroSection() {
               </div>
 
               <div className="absolute -top-6 -right-6 bg-card border border-border rounded-xl p-4 shadow-medium animate-float-delayed hover:shadow-strong transition-shadow">
-                <div className="text-2xl font-bold text-primary">$10.2k</div>
+                <div className="text-2xl font-bold text-primary">BDT 10.2k</div>
                 <div className="text-sm text-muted-foreground">Avg Monthly Revenue</div>
               </div>
             </div>

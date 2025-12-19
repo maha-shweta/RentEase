@@ -54,8 +54,8 @@ export function AnalyticsCards() {
   }, [landlord?.id]);
 
   const statItems = [
-    { title: "Total Revenue", value: `$${stats.totalRevenue.toLocaleString()}`, change: "+12.5%", trend: "up", icon: DollarSign, color: "text-success", bgColor: "bg-success/10" },
-    { title: "Average Rent", value: `$${stats.averageRent.toLocaleString()}`, change: "+5.2%", trend: "up", icon: TrendingUp, color: "text-primary", bgColor: "bg-primary/10" },
+    { title: "Total Revenue", value: `BDT ${stats.totalRevenue.toLocaleString()}`, change: "+12.5%", trend: "up", icon: DollarSign, color: "text-success", bgColor: "bg-success/10" },
+    { title: "Average Rent", value: `BDT ${stats.averageRent.toLocaleString()}`, change: "+5.2%", trend: "up", icon: TrendingUp, color: "text-primary", bgColor: "bg-primary/10" },
     { title: "Occupancy Rate", value: `${stats.occupancyRate}%`, change: "+2.1%", trend: "up", icon: Building2, color: "text-secondary", bgColor: "bg-secondary/10" },
     { title: "Collection Rate", value: `${stats.collectionRate}%`, change: "-1.3%", trend: "down", icon: Percent, color: "text-accent", bgColor: "bg-accent/10" },
   ];

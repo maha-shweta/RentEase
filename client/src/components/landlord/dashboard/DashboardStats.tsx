@@ -1,5 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Building2, Users, DollarSign, AlertCircle, Loader2 } from "lucide-react";
+import {
+  Building2,
+  Users,
+  DollarSign,
+  AlertCircle,
+  Loader2,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import { propertyService } from "@/services/property";
 import { tenantService } from "@/services/tenant";
@@ -61,11 +67,41 @@ export function DashboardStats() {
   }, [landlord?.id]);
 
   const statItems = [
-    { title: "Total Properties", value: stats.totalProperties, icon: Building2, color: "text-primary", bgColor: "bg-primary/10" },
-    { title: "Active Tenants", value: stats.activeTenants, icon: Users, color: "text-secondary", bgColor: "bg-secondary/10" },
-    { title: "Rent Collected", value: `$${stats.rentCollected.toLocaleString()}`, icon: DollarSign, color: "text-success", bgColor: "bg-success/10" },
-    { title: "Rent Pending", value: `$${stats.rentPending.toLocaleString()}`, icon: DollarSign, color: "text-accent", bgColor: "bg-accent/10" },
-    { title: "Overdue Amount", value: `$${stats.overdueAmount.toLocaleString()}`, icon: AlertCircle, color: "text-destructive", bgColor: "bg-destructive/10" },
+    {
+      title: "Total Properties",
+      value: stats.totalProperties,
+      icon: Building2,
+      color: "text-primary",
+      bgColor: "bg-primary/10",
+    },
+    {
+      title: "Active Tenants",
+      value: stats.activeTenants,
+      icon: Users,
+      color: "text-secondary",
+      bgColor: "bg-secondary/10",
+    },
+    {
+      title: "Rent Collected",
+      value: `BDT ${stats.rentCollected.toLocaleString()}`,
+      icon: DollarSign,
+      color: "text-success",
+      bgColor: "bg-success/10",
+    },
+    {
+      title: "Rent Pending",
+      value: `BDT ${stats.rentPending.toLocaleString()}`,
+      icon: DollarSign,
+      color: "text-accent",
+      bgColor: "bg-accent/10",
+    },
+    {
+      title: "Overdue Amount",
+      value: `BDT ${stats.overdueAmount.toLocaleString()}`,
+      icon: AlertCircle,
+      color: "text-destructive",
+      bgColor: "bg-destructive/10",
+    },
   ];
 
   if (loading) {

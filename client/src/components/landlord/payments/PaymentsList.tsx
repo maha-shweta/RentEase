@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useState, useEffect } from "react";
 import { paymentService, Payment } from "@/services/payment";
 import { api } from "@/lib/api";
+import { generatePaymentReceiptPDF } from "@/lib/generatePaymentPDF";
 
 interface PaymentsListProps {
   onRefresh?: () => void;
@@ -59,11 +60,17 @@ export function PaymentsList({ onRefresh }: PaymentsListProps) {
     }
   };
 
-  const handleGeneratePDF = (id: number) => {
-    toast({
-      title: "PDF Generated",
-      description: "Payment receipt has been generated successfully.",
-    });
+  const handleGeneratePDF = (payment: Payment) => {
+    try {
+      generatePaymentReceiptPDF(payment);
+      toast({
+        title: "PDF Generated",
+        description: "Payment receipt has been generated and downloaded.",
+      });
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      toast({ title: "Error", description: "Failed to generate PDF", variant: "destructive" });
+    }
   };
 
   const getStatusColor = (status: string) => {
@@ -123,7 +130,7 @@ export function PaymentsList({ onRefresh }: PaymentsListProps) {
                 <TableRow key={payment.id}>
                   <TableCell className="font-medium">{payment.tenant_name || '-'}</TableCell>
                   <TableCell>{payment.property_address || '-'}</TableCell>
-                  <TableCell className="font-bold">${Number(payment.amount).toLocaleString()}</TableCell>
+                  <TableCell className="font-bold">BDT {Number(payment.amount).toLocaleString()}</TableCell>
                   <TableCell>
                     {payment.due_date ? new Date(payment.due_date).toLocaleDateString() : '-'}
                   </TableCell>
@@ -161,7 +168,7 @@ export function PaymentsList({ onRefresh }: PaymentsListProps) {
                       <Button
                         size="sm"
                         variant="outline"
-                        onClick={() => handleGeneratePDF(payment.id)}
+                        onClick={() => handleGeneratePDF(payment)}
                       >
                         <FileText className="h-4 w-4 mr-2" />
                         PDF

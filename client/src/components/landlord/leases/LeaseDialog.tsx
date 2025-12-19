@@ -162,7 +162,7 @@ export function LeaseDialog({ open, onOpenChange, onSuccess }: LeaseDialogProps)
                                             ) : (
                                                 units.map((unit) => (
                                                     <SelectItem key={unit.id} value={String(unit.id)}>
-                                                        {unit.property_address} - Unit {unit.unit_number} (${unit.rent_amount}/mo)
+                                                        {unit.property_address} - Unit {unit.unit_number} (BDT {unit.rent_amount}/mo)
                                                     </SelectItem>
                                                 ))
                                             )}
@@ -210,7 +210,7 @@ export function LeaseDialog({ open, onOpenChange, onSuccess }: LeaseDialogProps)
                                 name="rentAmount"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Monthly Rent ($)</FormLabel>
+                                        <FormLabel>Monthly Rent (BDT)</FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="number"
@@ -227,7 +227,7 @@ export function LeaseDialog({ open, onOpenChange, onSuccess }: LeaseDialogProps)
                                 name="depositAmount"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Security Deposit ($)</FormLabel>
+                                        <FormLabel>Security Deposit (BDT)</FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="number"

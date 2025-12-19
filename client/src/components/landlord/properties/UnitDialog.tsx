@@ -136,7 +136,7 @@ export function UnitDialog({ open, onOpenChange, propertyId, onSuccess }: UnitDi
                                 name="rentAmount"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Rent Amount ($)</FormLabel>
+                                        <FormLabel>Rent Amount (BDT)</FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="number"

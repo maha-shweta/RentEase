@@ -7,6 +7,7 @@ import { FileText, Zap, Droplet, Flame, Wifi, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
+import { generateUtilityBillPDF } from "@/lib/generateUtilityPDF";
 
 interface Utility {
   id: number;
@@ -78,11 +79,17 @@ export function UtilitiesList({ onRefresh }: UtilitiesListProps) {
     }
   };
 
-  const handleGeneratePDF = (id: number) => {
-    toast({
-      title: "PDF Generated",
-      description: "Utility bill has been generated successfully.",
-    });
+  const handleGeneratePDF = (utility: Utility) => {
+    try {
+      generateUtilityBillPDF(utility);
+      toast({
+        title: "PDF Generated",
+        description: "Utility bill has been generated and downloaded.",
+      });
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      toast({ title: "Error", description: "Failed to generate PDF", variant: "destructive" });
+    }
   };
 
   const getUtilityIcon = (type: string) => {
@@ -147,7 +154,7 @@ export function UtilitiesList({ onRefresh }: UtilitiesListProps) {
                   </TableCell>
                   <TableCell className="font-medium">{utility.unit_number || '-'}</TableCell>
                   <TableCell>{utility.property_address || '-'}</TableCell>
-                  <TableCell className="font-bold">${Number(utility.amount).toLocaleString()}</TableCell>
+                  <TableCell className="font-bold">BDT {Number(utility.amount).toLocaleString()}</TableCell>
                   <TableCell>{new Date(utility.due_date).toLocaleDateString()}</TableCell>
                   <TableCell>
                     <Select
@@ -173,7 +180,7 @@ export function UtilitiesList({ onRefresh }: UtilitiesListProps) {
                     </Select>
                   </TableCell>
                   <TableCell>
-                    <Button size="sm" variant="outline" onClick={() => handleGeneratePDF(utility.id)}>
+                    <Button size="sm" variant="outline" onClick={() => handleGeneratePDF(utility)}>
                       <FileText className="h-4 w-4 mr-2" />
                       PDF
                     </Button>
