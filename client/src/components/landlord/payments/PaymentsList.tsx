@@ -33,7 +33,7 @@ export function PaymentsList({ onRefresh }: PaymentsListProps) {
     fetchPayments();
   }, []);
 
-  const handleStatusChange = async (paymentId: number, newStatus: string) => {
+  const handleStatusChange = async (paymentId: number, newStatus: Payment['payment_status']) => {
     setUpdatingId(paymentId);
     try {
       const response = await api.put(`/payments/${paymentId}/status`, {
@@ -140,7 +140,7 @@ export function PaymentsList({ onRefresh }: PaymentsListProps) {
                   <TableCell>
                     <Select
                       value={payment.payment_status}
-                      onValueChange={(value) => handleStatusChange(payment.id, value)}
+                      onValueChange={(value) => handleStatusChange(payment.id, value as Payment['payment_status'])}
                       disabled={updatingId === payment.id}
                     >
                       <SelectTrigger className="w-[120px]">

@@ -22,6 +22,10 @@ interface RentalAgreement {
     property_address?: string;
 }
 
+interface RentalAgreementsResponse {
+    agreements: RentalAgreement[];
+}
+
 const paymentSchema = z.object({
     rentalAgreementId: z.string().min(1, "Please select a tenant/lease"),
     amount: z.number().min(1, "Amount must be greater than 0"),
@@ -59,7 +63,7 @@ export function PaymentDialog({ open, onOpenChange, onSuccess }: PaymentDialogPr
     useEffect(() => {
         const fetchData = async () => {
             setLoadingData(true);
-            const response = await api.get('/rental-agreements');
+            const response = await api.get<RentalAgreementsResponse>('/rental-agreements');
             if (response.data?.agreements) {
                 // Only show active agreements
                 setRentalAgreements(response.data.agreements.filter((a: RentalAgreement) => a.status === 'Active'));
